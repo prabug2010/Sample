@@ -17,7 +17,6 @@ public class Checkbox {
 	PageFactory.initElements(driv, this);
 	
   Thread.sleep(3000);
-String loadTitle = driv.getTitle();
 WebElement optb1 = driv.findElement(By.id("vfb-6-0"));
 WebElement optb2 = driv.findElement(By.id("vfb-6-1"));
 
