@@ -32,25 +32,15 @@ public class Popup {
 		{
 			System.out.println("box loaded");
 		}
+		System.out.println(abox.getText());
 		abox.sendKeys(Keys.ENTER);
 		
-		
-	//	abox.click();
-		
-	/*	WebElement box = driver.findElement(By.xpath(".//*[@id='AlertBox']/button"));
-		
-		if(box.isEnabled())
-		{
-			System.out.println("box is loaded");
-		}
-		
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		box.click();
-	*/		
 		Thread.sleep(3000);
 			
 		//Using Alert class to first switch to or focus to the alert box
 		Alert alert = driver.switchTo().alert();
+		
+		System.out.println(alert.getText());
 			
 		//Using accept() method to accept the alert box
 		alert.accept();
@@ -74,6 +64,4 @@ public class Popup {
 		Popup obj = new Popup();
 		obj.alertAutomation();
 	}
-	
-
 }

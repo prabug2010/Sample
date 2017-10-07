@@ -1,7 +1,6 @@
 package com.murali.selenium;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,19 +11,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.Select;
 
 //comment the above line and uncomment below line to use Chrome
 //import org.openqa.selenium.chrome.ChromeDriver;
 public class SeleniumSample {
 
-	@FindBy(xpath = ".//*[@id='email']")
+	@FindBy(css = "#email")
 	public WebElement userName;
 
 	@FindBy(xpath = ".//*[@id='pass']")
 	public WebElement password;
 
-	@FindBy(xpath = ".//*[@id='u_0_r']")
+	@FindBy(css = "label[id='loginbutton']")
 	public WebElement loginButton;
 	
 	@FindBy(xpath = ".//*[@id='userNavigationLabel']")
@@ -101,14 +99,19 @@ public class SeleniumSample {
 		PageFactory.initElements(driver, this);
 
 		waitFor(driver, ExpectedConditions.elementToBeClickable(userName), 20);
+		
 		userName.click();
 		userName.clear();
 		userName.sendKeys("prabug2010@ymail.com");
-
+		
 		password.click();
 		password.clear();
 		password.sendKeys("myfbaccount");
 
+		if(loginButton.isEnabled()&&loginButton.isDisplayed())
+		{
+			System.out.println("Login Buton enabled");
+		}
 		loginButton.click();
 		
 		Thread.sleep(3000);
@@ -136,6 +139,7 @@ public class SeleniumSample {
 		String loadTitle2 = driver.getTitle();
 		System.out.println(loadTitle2);
 		driver.close();
+		
 	}
 
 }

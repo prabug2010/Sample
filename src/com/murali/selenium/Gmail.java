@@ -25,6 +25,7 @@ public class Gmail {
 		WebElement next = driver.findElement(By.cssSelector(".ZFr60d.CeoRYc"));
 		next.click();
 		
+	
 		WebElement pass = driver.findElement(By.cssSelector(".whsOnd.zHQkBf"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		if(pass.isDisplayed()&& pass.isEnabled()){

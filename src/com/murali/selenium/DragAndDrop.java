@@ -5,24 +5,23 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class DragAndDrop {
 	
-	@FindBy(xpath = ".//*[@id='treebox1']/div/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[4]/span")
+	@FindBy(css = "#sourceImage")
 	public static WebElement src1;
 	
-	@FindBy(xpath = ".//*[@id='treebox2']/div/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[4]/span")
+	@FindBy(css = "#targetDiv")
 	public static WebElement destn;
 	
 	
 	public void Demodnd() throws Exception
 	{
 		WebDriver driver = new FirefoxDriver();
-		String url = "https://dhtmlx.com/docs/products/dhtmlxTree/";
+		String url = "http://artoftesting.com/sampleSiteForSelenium.html";
 		driver.get(url);
 		driver.manage().window().maximize();
 		PageFactory.initElements(driver, this);

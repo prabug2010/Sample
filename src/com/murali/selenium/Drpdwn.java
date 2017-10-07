@@ -1,7 +1,6 @@
 package com.murali.selenium;
 
-import java.util.concurrent.TimeUnit;
-
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,12 +38,10 @@ public class Drpdwn {
 	public <V> V waitFor(WebDriver driver, ExpectedCondition<V> expectedCondition, int timeOutInSeconds) {
 		return new WebDriverWait(driver, timeOutInSeconds, 500).until(expectedCondition);
 	}
-	
 
 	public void drop() throws Exception
 	{
 		WebDriver driver = new FirefoxDriver();
-		
 		String url = "https://www.facebook.com/";
 		driver.get(url);
 		String actualTitle = driver.getTitle();
@@ -59,7 +56,6 @@ public class Drpdwn {
 			firstname.sendKeys("lakshmi");
 		}
 		
-		
 		surname.click();
 		surname.sendKeys("gunasekaran");
 		
@@ -72,16 +68,31 @@ public class Drpdwn {
 		pswd.click();
 		pswd.sendKeys("myfbact");
 		
-		Select bdayday = new Select(driver.findElement(By.name("birthday_day")));
-		bdayday.selectByVisibleText("13");
+	//	Select bdayday = new Select(driver.findElement(By.name("birthday_day")));
+	//	bdayday.selectByVisibleText("13");
 		
 		Select bdaymonth = new Select(driver.findElement(By.name("birthday_month")));
-		bdaymonth.selectByVisibleText("Aug");
+	//	bdaymonth.selectByVisibleText("Aug");
 		
-		Select bdayyear = new Select(driver.findElement(By.name("birthday_year")));
-		bdayyear.selectByVisibleText("1970");
+		List<WebElement> l1 = bdaymonth.getOptions();
+		int listSize = l1.size();
 		
-		genderbtn.click();
+		for(int i=0; i<listSize; i++)
+		{
+			String s = bdaymonth.getOptions().get(i).getText();
+			System.out.println(s);
+			if(s.equals("Oct"))
+			{
+				bdaymonth.selectByIndex(10);
+			}
+		}
+		
+		System.out.println("Birthday month retrieved");
+		
+	//	Select bdayyear = new Select(driver.findElement(By.name("birthday_year")));
+	//	bdayyear.selectByVisibleText("1970");
+		
+	//	genderbtn.click();
 		
 	/*	submitbtn.click();
 		
@@ -93,7 +104,6 @@ public class Drpdwn {
 		driver.close();
 		*/
 	}
-	
 	public static void main(String arg[]) throws Exception
 	{
 		System.setProperty("webdriver.gecko.driver", "G:\\Selenium jars\\gecko\\geckodriver.exe");

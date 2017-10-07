@@ -15,7 +15,6 @@ public class Guru99 {
 		PageFactory.initElements(driv, this);
 		
       Thread.sleep(3000);
-	String loadTitle = driv.getTitle();
 	WebElement radiob1 = driv.findElement(By.id("vfb-7-1"));
 	WebElement radiob2 = driv.findElement(By.id("vfb-7-2"));
 	
